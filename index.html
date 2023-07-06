@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Fundamentals Quiz</title>
+  </head>
+  <body>
+    <header>
+      <div class="start-page" data-state="visible">
+        <p class="high-scores">View High Scores</p>
+        <p class="rules">How to play</p>
+      </div>
+      <div class="action" data-state="hidden">
+        <p>Score: <span>0</span></p>
+        <p class="timer"></p>
+      </div>
+    </header>
+    <div class="start-page" data-state="visible">
+      <h1>JavaScript Fundamentals Quiz!</h1>
+      <p>Ready to play?</p>
+      <button class="start-button">Start</button>
+    </div>
+    <div class="question action" data-state="hidden">
+      <h1>Question 1</h1>
+      <p>Blah Blah?</p>
+      <input type="radio" id="choice1" class="correct" />
+      <label for="choice1">Choice 1</label>
+      <input type="radio" id="choice2" class="incorrect" />
+      <label for="choice2">Choice 2</label>
+      <input type="radio" id="choice3" class="incorrect" />
+      <label for="choice3">Choice 3</label>
+      <input type="radio" id="choice4" class="incorrect" />
+      <label for="choice4">Choice 4</label>
+    </div>
+    <div class="high-scores" data-state="hidden">
+      <h1>High Scores</h1>
+    </div>
+    <div class="rules" data-state="hidden">
+      <h1>How to play</h1>
+      <p>Hit the Start button to begin</p>
+      <p>The timer will begin with 1 minute on the clock</p>
+      <p>Read the question carefully and choose an answer</p>
+      <p>Choose correctly and you gain a point</p>
+      <p>Choose incorrectly and your time will be reduced by 10 seconds</p>
+      <p>
+        The game ends when the time runs out or all the questions have been
+        answered
+      </p>
+
+      <p>Good luck!</p>
+    </div>
+  </body>
+</html>
