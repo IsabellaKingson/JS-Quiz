@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JavaScript Fundamentals Quiz</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
     <header>
       <div class="start-page" data-state="visible">
-        <p class="high-scores">View High Scores</p>
-        <p class="rules">How to play</p>
+        <p class="show-high-scores">View High Scores</p>
+        <p class="show-rules">How to play</p>
       </div>
       <div class="action" data-state="hidden">
         <p>Score: <span>0</span></p>
@@ -33,6 +34,11 @@
       <input type="radio" id="choice4" class="incorrect" />
       <label for="choice4">Choice 4</label>
     </div>
+    <div class="results">
+      <p>Your score: <span></span></p>
+      <label for="initials">Enter your initials:</label>
+      <input id="initials" />
+    </div>
     <div class="high-scores" data-state="hidden">
       <h1>High Scores</h1>
     </div>
@@ -50,5 +56,6 @@
 
       <p>Good luck!</p>
     </div>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
