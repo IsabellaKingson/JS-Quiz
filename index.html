@@ -8,41 +8,45 @@
   </head>
   <body>
     <header>
-      <div class="start-page" data-state="visible">
+      <div class="start-page">
         <p class="show-high-scores">View High Scores</p>
         <p class="show-rules">How to play</p>
       </div>
-      <div class="action" data-state="hidden">
-        <p>Score: <span>0</span></p>
+      <div class="action">
+        <p class="score">Score:</p>
         <p class="timer"></p>
       </div>
     </header>
-    <div class="start-page" data-state="visible">
+    <div class="start-page title">
       <h1>JavaScript Fundamentals Quiz!</h1>
       <p>Ready to play?</p>
       <button class="start-button">Start</button>
     </div>
-    <div class="question action" data-state="hidden">
-      <h1>Question 1</h1>
-      <p>Blah Blah?</p>
-      <input type="radio" id="choice1" class="correct" />
-      <label for="choice1">Choice 1</label>
-      <input type="radio" id="choice2" class="incorrect" />
-      <label for="choice2">Choice 2</label>
-      <input type="radio" id="choice3" class="incorrect" />
-      <label for="choice3">Choice 3</label>
-      <input type="radio" id="choice4" class="incorrect" />
-      <label for="choice4">Choice 4</label>
+    <div class="question action">
+      <h1 class="question-num"></h1>
+      <p class="question-text">
+        sed enim ut sem viverra aliquet eget sit amet tellus
+      </p>
+      <div class="answers">
+        <button class="answer" data-choice="0"></button>
+        <button class="answer" data-choice="1"></button>
+        <button class="answer" data-choice="2"></button>
+        <button class="answer" data-choice="3"></button>
+      </div>
     </div>
     <div class="results">
       <p>Your score: <span></span></p>
       <label for="initials">Enter your initials:</label>
       <input id="initials" />
     </div>
-    <div class="high-scores" data-state="hidden">
+    <div class="high-scores">
       <h1>High Scores</h1>
+      <div class="scores">
+        <p>Initials:</p>
+        <p>Score:</p>
+      </div>
     </div>
-    <div class="rules" data-state="hidden">
+    <div class="rules">
       <h1>How to play</h1>
       <p>Hit the Start button to begin</p>
       <p>The timer will begin with 1 minute on the clock</p>
@@ -56,6 +60,7 @@
 
       <p>Good luck!</p>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
