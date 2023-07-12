@@ -8,9 +8,9 @@
   </head>
   <body>
     <header>
-      <div class="start-page">
-        <p class="show-high-scores">View High Scores</p>
-        <p class="show-rules">How to play</p>
+      <div class="start-page-header">
+        <p id="show-high-scores">View High Scores</p>
+        <p id="show-rules">How to play</p>
       </div>
       <div class="action">
         <p class="score">Score:</p>
@@ -35,9 +35,10 @@
       </div>
     </div>
     <div class="results">
-      <p>Your score: <span></span></p>
+      <p>Your score: <span id="user-score"></span></p>
       <label for="initials">Enter your initials:</label>
       <input id="initials" />
+      <button id="submit-results">Submit</button>
     </div>
     <div class="high-scores">
       <h1>High Scores</h1>

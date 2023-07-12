@@ -121,17 +121,19 @@ const questions = [
   },
 ];
 const startPage = $(".start-page");
+const startPageHeader = $(".start-page-header");
 const game = $(".action");
 const secondsLeft = $(".timer");
 let timeLeft = 60;
 let questionText = $(".question-text");
-let currentQuestion = 0;
+let questionIndex = 0;
 let answer = $(".answer");
 let score = 0;
 const startBtn = $(".start-button");
-const hideStartPage = function () {
-  startPage.css("display", "none");
-  game.css("display", "flex");
+const startPageToggle = function () {
+  startPage.toggle();
+  startPageHeader.toggle();
+  game.toggle();
   const question = $(".question");
 };
 function setTime() {
@@ -140,31 +142,37 @@ function setTime() {
     secondsLeft.text(timeLeft + " seconds left");
     if (timeLeft === 1) {
       secondsLeft.text(timeLeft + " second left");
-    } else if (timeLeft === 0) {
+    } else if (timeLeft <= 0) {
       clearInterval(timer);
+      results();
     }
   }, 1000);
 }
 function displayQuestion() {
-  questionText.text(questions[currentQuestion].Q);
+  questionText.text(questions[questionIndex].Q);
 }
 function displayAnswer() {
   answer.each(function (i) {
     let ansEl = $(this);
-    let currentAns = questions[currentQuestion].A[i].text;
+    let currentAns = questions[questionIndex].A[i].text;
     ansEl.text(currentAns);
   });
 }
 function nextQuestion() {
-  currentQuestion++;
-  displayQuestion();
-  displayAnswer();
-  displayQNum();
+  questionIndex++;
+  if (questionIndex < questions.length) {
+    displayQuestion();
+    displayAnswer();
+    displayQNum();
+  } else {
+    results();
+    return;
+  }
 }
 function checkAns(event) {
   btnTarget = event;
   let selected = btnTarget.dataset.choice;
-  if (questions[currentQuestion].A[selected].isCorrect) {
+  if (questions[questionIndex].A[selected].isCorrect) {
     score++;
     displayScore();
     nextQuestion();
@@ -183,15 +191,60 @@ answer.on("click", function (event) {
   checkAns(event.target);
 });
 function displayQNum() {
-  let qNum = $(".question-number");
+  let qNum = $(".question-num");
+  currentQuestion = questionIndex + 1;
   qNum.text("Question " + currentQuestion + " of 10");
 }
 
+let submitBtn = $("#submit-results");
+function results() {
+  game.toggle();
+  $(".results").toggle();
+  let userScore = $("#user-score");
+  userScore.text(score);
+  let userInitials = $("#initials");
+  let userEntry = {
+    initials: userInitials,
+    scored: score,
+  };
+  submitBtn.on("click", function (event) {
+    event.preventDefault();
+    localStorage.setItem("userEntry", JSON.stringify(userEntry));
+    addHighScore();
+    startPageToggle();
+  });
+}
+function addHighScore() {
+  let newEntry = JSON.parse(localStorage.getItem("userEntry"));
+  let scoresEl = $(".scores");
+  let newInitials = $("<p>");
+  newInitials.text(newEntry.userInitials);
+  scoresEl.append(newInitials);
+  let newScore = $("<p>");
+  newScore.text(newEntry.userScore);
+  scoresEl.append(newScore);
+}
 startBtn.on("click", function (event) {
   event.preventDefault();
-  hideStartPage();
+  startPageToggle();
   setTime();
   displayQuestion();
   displayAnswer();
   displayQNum();
+  return;
+});
+
+highScoresBtn = $("#show-high-scores");
+rulesBtn = $("#show-rules");
+
+highScoresBtn.on("click", function () {
+  startPage.toggle();
+  $(".high-scores").toggle();
+  rulesBtn.toggle();
+});
+
+rulesBtn.on("click", function () {
+  startPage.toggle();
+  $(".rules").toggle();
+  highScoresBtn.toggle();
 });
