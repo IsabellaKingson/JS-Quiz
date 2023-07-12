@@ -1,10 +1,126 @@
+:root {
+  --main-color: #df7412;
+  --secondary-color: white;
+  --tertiary-color: #d9d9d9;
+}
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}
+header > div {
+  display: flex;
+  justify-content: space-between;
+  color: var(--main-color);
+  margin: 30px 40px;
+  font-size: 20px;
+}
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 700px;
+}
+.title h1 {
+  color: var(--main-color);
+  font-size: 40px;
+  margin: 7px;
+}
+.title p {
+  font-weight: normal;
+  font-size: 20px;
+  margin: 7px;
+}
+.start-button {
+  background-color: var(--main-color);
+  height: 45px;
+  width: 140px;
+  border-radius: 25px;
+  border: none;
+  color: var(--secondary-color);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  letter-spacing: 7px;
+  margin: 7px;
+}
+
+body .question {
+  margin: 20% auto;
+}
+.question {
+  border: 5px solid var(--main-color);
+  border-radius: 25px;
+  height: fit-content;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+.question h1 {
+  position: relative;
+  top: -60px;
+  align-self: center;
+  color: var(--main-color);
+  font-size: 24px;
+}
+.question-text {
+  position: relative;
+  top: -40px;
+  align-self: center;
+  margin: 5px 20px;
+}
+.answers {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 20px;
+}
+.answer {
+  background-color: var(--tertiary-color);
+  font-weight: 500;
+  margin: 3px 0px;
+  width: 80%;
+  padding: 15px;
+  border: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+}
+
 .action {
   display: none;
 }
 
 .rules {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.rules h1 {
+  color: var(--main-color);
+}
+.rules p:last-child {
+  color: var(--main-color);
+  font-size: 1.3em;
+}
+.rules {
   display: none;
 }
+.high-scores h1 {
+  text-align: center;
+  color: var(--main-color);
+}
+.scores {
+  display: grid;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
 .high-scores {
+  display: none;
+}
+
+.results {
   display: none;
 }
