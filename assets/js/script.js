@@ -202,29 +202,34 @@ function results() {
   $(".results").toggle();
   let userScore = $("#user-score");
   userScore.text(score);
-  let userInitials = $("#initials");
+}
+submitBtn.on("click", function (event) {
+  let userInitials = $("#initials").val();
   let userEntry = {
     initials: userInitials,
     scored: score,
   };
-  submitBtn.on("click", function (event) {
-    event.preventDefault();
-    localStorage.setItem("userEntry", JSON.stringify(userEntry));
-    addHighScore();
-    startPageToggle();
-  });
-}
+  let previousScores = JSON.parse(localStorage.getItem("userEntry")) || [];
+  previousScores.push(userEntry);
+  event.preventDefault();
+  localStorage.setItem("userEntry", JSON.stringify(previousScores));
+  window.location.reload();
+});
 function addHighScore() {
-  let newEntry = JSON.parse(localStorage.getItem("userEntry"));
-  let scoresEl = $(".scores");
-  let newInitials = $("<p>");
-  newInitials.text(newEntry.userInitials);
-  scoresEl.append(newInitials);
-  let newScore = $("<p>");
-  newScore.text(newEntry.userScore);
-  scoresEl.append(newScore);
+  let newEntry = JSON.parse(localStorage.getItem("userEntry")) || [];
+  for (let i = 0; i < newEntry.length; i++) {
+    let scoresEl = $(".scores");
+    let newInitials = $("<p>");
+    newInitials.text(newEntry[i].initials);
+    scoresEl.append(newInitials);
+    let newScore = $("<p>");
+    newScore.text(newEntry[i].scored);
+    scoresEl.append(newScore);
+  }
 }
 startBtn.on("click", function (event) {
+  score = 0;
+  timeLeft = 60;
   event.preventDefault();
   startPageToggle();
   setTime();
@@ -241,6 +246,7 @@ highScoresBtn.on("click", function () {
   startPage.toggle();
   $(".high-scores").toggle();
   rulesBtn.toggle();
+  addHighScore();
 });
 
 rulesBtn.on("click", function () {
